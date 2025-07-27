@@ -1,0 +1,26 @@
+### EDA Steps Taken:
+
+Loaded the dataset and examined its structure, types, and unique values for each variable.
+Plotted relationships between key variables (discount vs. profit, sales vs. profit) using scatter plots.
+Explored the mapping between IDs and names for customers and products, discovered some many-to-many relationships for products name and ID.
+Visualized distributions of numeric variables and categorical counts using histograms and box plots.
+Analyzed trends in sales, profit, and quantity, both cumulatively by day and breakdown by month, and plotted trends by sub-category.
+
+
+### Preprocessing:
+
+Converted date columns to datetime and then to numerical format for modeling.
+Applied one-hot encoding to important categorical variables (Ship Mode, Segment, Region, Sub-Category).
+Removed outliers based on extreme values in sales, profit, and quantity.
+Standardized and normalized numerical features: profit was standardized, sales was log-transformed and standardized, and other numeric columns such as date, quantity, discount were normalized.
+Dropped columns that were IDs or too specific to avoid overfitting.
+Upsampled sub-categories to have equal representation for each class.
+
+
+### Interesting Findings:
+
+Many-to-Many Relationship: Product IDs and Product Names does not exhibit a strictly one-to-one relationship, one ID can have multiple names and one name can have multiple IDs.
+Imbalanced Data: The dataset is highly imbalanced in most categorical variables such as Ship Mode, Segment, Sub-Category.
+Correlated variables: Order date and ship date are the most highly correlated. Quantity is positively correlated with sales, but both have only a weak correlation with profit. Discount is negatively correlated with profit, where higher discounts generally reduce profit.
+Region and Sub-category effects: Discounts correlates by region, with the Central region receives the highest discounts. Sales and profit also vary significantly by sub-category, with chairs generating the most profit and tables often resulting in losses.
+Cyclic Trends: There are strong cyclic seasonal trends in sales and quantity, with peaks in September, November, and December, however this trend does not exist for profit.
